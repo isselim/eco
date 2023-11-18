@@ -1,0 +1,80 @@
+@startuml
+
+class User <<Person>> {
+  userId: String
+  username: String
+  email: String
+  registrationDate: Date
+  address: String
+  phoneNumber: String
+}
+
+class WasteBin <<Entity>> {
+  binId: String
+  location: String
+  capacity: int
+  wasteType: String
+  lastEmptied: Date
+  status: String
+  maintenanceHistory: String
+}
+
+class RecyclingCenter <<Entity>> {
+  centerId: String
+  location: String
+  contactNumber: String
+  operatingHours: String
+  website: String
+  servicesOffered: String
+  coordinator: User
+}
+
+class WasteItem <<Entity>> {
+  itemId: String
+  category: String
+  weight: double
+  disposalDate: Date
+  disposedBy: User
+  disposalMethod: String
+  isRecyclable: boolean
+}
+
+class Report <<Entity>> {
+  reportId: String
+  description: String
+  reportDate: Date
+  reportedBy: User
+  status: String
+  resolution: String
+}
+
+class SystemBehavior <<Component>> {
+  Features: String
+}
+
+class UseCase <<Entity>> {
+  Actors: String
+  UseCases: String
+}
+
+class Activity <<Component>> {
+  Activities: String
+  Flow: String
+}
+
+class StateMachine <<Entity>> {
+  States: String
+  Transitions: String
+}
+
+class SequenceDiagram <<Entity>> {
+  Participants: String
+  Interaction: String
+  UserInteractionFlow: String
+}
+
+User "1" --> "*" WasteItem: reports
+WasteBin "1" --> "*" WasteItem: manages
+RecyclingCenter "1" --> "*" Report: receives
+
+@enduml
